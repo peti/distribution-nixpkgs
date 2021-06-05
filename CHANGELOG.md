@@ -11,3 +11,6 @@
     This fixes `resolve` not finding certain identifiers if there were
     two attributes pointing to the same derivation in nixpkgs. See also
     [#9](https://github.com/peti/distribution-nixpkgs/issues/9).
+* `Distribution.Nixpkgs.Meta`
+  * `pPrint (x :: Meta)` now renders every maintainer as a full attribute
+    path instead of using a let binding.
