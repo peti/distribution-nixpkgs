@@ -5,7 +5,7 @@
 
 module Language.Nix.PrettyPrinting
   ( onlyIf
-  , setattr, toAscList
+  , setattr, toCaseInsensitiveAscList
   , listattr
   , boolattr
   , attr
@@ -44,10 +44,10 @@ listattr n prefix vs = onlyIf (not (null vs)) $
                     ]
 
 setattr :: String -> Doc -> Set String -> Doc
-setattr name prefix set = listattr name prefix (toAscList set)
+setattr name prefix set = listattr name prefix (toCaseInsensitiveAscList set)
 
-toAscList :: Set String -> [String]
-toAscList = sortBy (compare `on` map toLower) . Set.toList
+toCaseInsensitiveAscList :: Set String -> [String]
+toCaseInsensitiveAscList = sortBy (compare `on` map toLower) . Set.toList
 
 bool :: Bool -> Doc
 bool True  = text "true"
